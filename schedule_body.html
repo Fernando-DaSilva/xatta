@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Body Part Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    svg {
+      width: 300px;
+      cursor: pointer;
+    }
+
+    .body-part {
+      fill: #e0e0e0;
+      stroke: #aaa;
+      stroke-width: 1;
+      transition: fill 0.3s;
+    }
+
+    .body-part:hover {
+      fill: #b0bec5;
+    }
+
+    .selected {
+      fill: #26a69a !important;
+      stroke: #004d40;
+    }
+
+    #selected-part {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Please select a body part *</h2>
+
+  <!-- Example simplified front view SVG -->
+  <svg viewBox="0 0 200 500" id="body-map">
+    <!-- Head -->
+    <circle class="body-part" id="head" cx="100" cy="40" r="30" />
+
+    <!-- Chest -->
+    <rect class="body-part" id="chest" x="60" y="80" width="80" height="80" rx="10" />
+
+    <!-- Abdomen -->
+    <rect class="body-part" id="abdomen" x="65" y="160" width="70" height="70" rx="10" />
+
+    <!-- Left Arm -->
+    <rect class="body-part" id="left-arm" x="20" y="80" width="30" height="120" rx="10" />
+
+    <!-- Right Arm -->
+    <rect class="body-part" id="right-arm" x="150" y="80" width="30" height="120" rx="10" />
+
+    <!-- Legs -->
+    <rect class="body-part" id="left-leg" x="75" y="240" width="25" height="180" rx="10" />
+    <rect class="body-part" id="right-leg" x="100" y="240" width="25" height="180" rx="10" />
+  </svg>
+
+  <div id="selected-part">No part selected</div>
+
+  <script>
+    const parts = document.querySelectorAll('.body-part');
+    const selectedPartDisplay = document.getElementById('selected-part');
+
+    parts.forEach(part => {
+      part.addEventListener('click', () => {
+        // Remove selection from others
+        parts.forEach(p => p.classList.remove('selected'));
+        // Mark selected
+        part.classList.add('selected');
+        // Update display
+        selectedPartDisplay.textContent = 'Selected: ' + part.id.replace('-', ' ');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<h2>Services & Pricing</h2>
+<div class="grid grid-2">
+<div class="card"><h3>Fineline</h3><p>Minimal, delicate lines and micro tattoos.</p><span>from €90</span></div>
+<div class="card"><h3>Blackwork</h3><p>Bold, high-contrast, geometric or abstract.</p><span>from €120</span></div>
+<div class="card"><h3>Realism</h3><p>Portraits and lifelike shading.</p><span>from €180</span></div>
+<div class="card"><h3>Traditional</h3><p>Classic motifs and saturated color.</p><span>from €140</span></div>
+</div>
+</section>
+
+
+<section id="gallery" class="gallery">
+<h2>Recent Work</h2>
+<div class="grid grid-3">
+<img src="https://images.unsplash.com/photo-1548095115-45697e513590?q=80&w=1200&auto=format&fit=crop" alt="Tattoo 1">
+<img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" alt="Tattoo 2">
+<img src="https://images.unsplash.com/photo-1514846326710-096e4a8035e9?q=80&w=1200&auto=format&fit=crop" alt="Tattoo 3">
+</div>
+</section>
+
+
+<section id="faq">
+<h2>FAQ</h2>
+<details><summary>How do I get a price estimate?</summary><p>Submit the request form with details about size, placement, and style. We’ll review and reply with an estimate.</p></details>
+<details><summary>Do you accept walk-ins?</summary><p>We primarily work by appointment. Limited walk-ins may be available—call ahead.</p></details>
+<details><summary>Is a deposit required?</summary><p>Yes, deposits secure your booking and are deducted from the final price.</p></details>
+<details><summary>How should I prepare?</summary><p>Stay hydrated, avoid alcohol for 24 hours, and eat before your session.</p></details>
+</section>
+
+
+<section id="request">
+<h2>Request an appointment</h2>
+<form id="requestForm">
+<input type="text" name="name" placeholder="Full name" required />
+<input type="email" name="email" placeholder="Email" required />
+<input type="text" name="phone" placeholder="Phone" />
+<select name="artist"><option>Any</option><option>Alex</option><option>Maya</option><option>Jonas</option><option>Nora</option></select>
+<input type="text" name="placement" placeholder="Placement (e.g. forearm)" />
+<input type="text" name="size" placeholder="Approx. size (cm)" />
+<select name="style"><option>Fineline</option><option>Blackwork</option><option>Realism</option><option>Traditional</option><option>Not sure</option></select>
+<select name="color"><option>Black & Grey</option><option>Color</option><option>Either</option></select>
+<input type="number" name="budget" placeholder="Budget (EUR)" />
+<input type="date" name="date" />
+<input type="time" name="time" />
+<textarea name="idea" placeholder="Describe your idea"></textarea>
+<input type="file" name="files" multiple />
+<label><input type="checkbox" name="consent" required /> I agree to be contacted regarding my request</label>
+<button type="submit" class="submit">Send request</button>
+</form>
+<div id="thankyou" style="display:none;color:#171717;background:#DDBAAC;padding:10px;border-radius:8px;margin-top:10px;">Thank you! Your request has been sent.</div>
+</section>
+
+
+<section id="contact">
+<h2>Visit us</h2>
+<p>Marktplatz 24, 75365 Calw, Germany</p>
+<p>✆ +49 (0) 7236 982872</p>
+<p>✉ info@signature-suite.com</p>
+<iframe title="Map" width="100%" height="300" src="https://www.google.com/maps?q=Marktplatz%2024,%2075365%20Calw&output=embed"></iframe>
+</section>
+
+
+<footer>
+© <span id="year"></span> Signature Suite Calw • Unofficial lookalike demo.
+</footer>
+
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+
+function scrollToForm() {
+document.getElementById('request').scrollIntoView({behavior:'smooth'});
+}
+
+
+document.getElementById('requestForm').addEventListener('submit', function(e) {
+e.preventDefault();
+console.log("Form submitted", Object.fromEntries(new FormData(this).entries()));
+document.getElementById('thankyou').style.display = 'block';
+setTimeout(()=>{document.getElementById('thankyou').style.display='none'},4000);
+this.reset();
+});
+</script>
+</body>
+</html>

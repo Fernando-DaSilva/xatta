@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xatta Tattoo - Premium Tattoo Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Configurable dot background */
+            --dot-spacing: 10px; /* Spacing between dots */
+            --dot-size: 2px; /* Size of the dots */
+            --dot-color:  rgba(213, 190, 44, 0.1); /* Color of the dots */
+
+            /* Colors */
+            --color-sand: #FEBE98;
+            --color-almost-black: #171717;
+            --color-light-gray: #6a727d;
+            --color-dark-gray: #303336;
+
+            /* Fonts */
+            --font-primary: 'Georgia', serif;
+            --font-secondary: 'Roboto', sans-serif;
+            --font-accent: 'Permanent Marker', cursive;
+        }
+
+        body {
+            font-family: var(--font-primary);
+        }
+
+        section {
+            padding-top: 0; /* Remove top padding */
+            padding-bottom: 0; /* Remove bottom padding */
+            margin-top: 0; /* Remove top margin */
+            margin-bottom: 0; /* Remove bottom margin */
+            background-image: radial-gradient(var(--dot-color) var(--dot-size), transparent var(--dot-size));
+            background-size: var(--dot-spacing) var(--dot-spacing);
+        }
+
+        .container {
+            margin-top: 0; /* Remove top margin */
+            margin-bottom: 0; /* Remove bottom margin */
+            padding-top: 0; /* Remove top padding */
+            padding-bottom: 0; /* Remove bottom padding */
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Georgia', serif;
+        }
+            
+        .hero-title {
+            font-family: 'Georgia', serif;
+        }
+        
+        .tattoo-carousel {
+            scroll-snap-type: x mandatory;
+        }
+        
+        .tattoo-carousel img {
+            scroll-snap-align: start;
+            object-fit: contain; /* Ensures the entire image is visible */
+            width: 100%; /* Makes the image span the full width of its container */
+            height: 100%; /* Makes the image span the full height of its container */
+        }
+        
+        /* Background Colors */
+        .bg-sand {
+            background-color: var(--color-sand);
+        }
+        
+        .bg-almost-black {
+            background-color: var(--color-almost-black);
+        }
+        
+        .bg-light-gray {
+            background-color: var(--color-light-gray);
+        }
+        
+        .bg-dark-gray {
+            background-color: var(--color-dark-gray);
+        }
+        
+        /* Text Colors */
+        .text-sand {
+            color: var(--color-sand);
+        }
+        
+        .text-almost-black {
+            color: var(--color-almost-black);
+        }
+        
+        .text-light-gray {
+            color: var(--color-light-gray);
+        }
+        
+        .text-dark-gray {
+            color: var(--color-dark-gray);
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--color-almost-black);
+            color: var(--color-sand);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-sand);
+            color: var(--color-almost-black);
+        }
+        
+        .btn-secondary {
+            background-color: var(--color-sand);
+            color: var(--color-almost-black);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--color-almost-black);
+            color: var(--color-sand);
+        }
+        
+        /* Navigation Links */
+        .nav-link:hover {
+            color: var(--color-sand);
+        }
+
+        /* Reduce section spacing for smaller screens */
+        @media (max-width: 768px) {
+            section {
+                padding-top: 5px; /* Reduce top padding */
+                padding-bottom: 5px; /* Reduce bottom padding */
+            }
+        }
+
+        /* --- New: responsive hero logo sizing --- */
+        /* default desktop size */
+        .hero-logo img {
+            width: 860px;
+            height: auto;
+            max-width: 60vw; /* keep it responsive if viewport is narrow */
+        }
+
+        /* larger on small devices (smartphones) */
+        @media (max-width: 640px) {
+            .hero-logo img {
+                width: 480px;     /* bigger on phones */
+                max-width: 90vw;  /* but never exceed viewport width */
+                height: auto;
+            }
+
+            /* move the logo to the top on small screens */
+            .hero-logo {
+                top: 15% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-sand">
+    <!-- Navigation -->
+    <nav class="bg-almost-black text-sand py-4 px-6 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold hero-title">
+                <img src="assets/logos/X1.png" alt="Xatta Logo" style="width:10%; height:auto;">
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link hover:text-sand transition duration-300">Home</a>
+                <a href="#school" class="nav-link hover:text-sand transition duration-300">Shool</a>
+                <a href="#shop" class="nav-link hover:text-sand transition duration-300">Shop</a>
+                <a href="#portfolio" class="nav-link hover:text-sand transition duration-300">Portfolio</a>
+                <a href="#artists" class="nav-link hover:text-sand transition duration-300">Artists</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-sand focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-almost-black absolute w-full left-0 px-6 pb-4 shadow-lg">
+            <div class="flex flex-col space-y-3 mt-2">
+                <a href="#home" class="nav-link hover:text-sand transition duration-300">Home</a>
+                <a href="#school" class="nav-link hover:text-sand transition duration-300">School</a>
+                <a href="#shop" class="nav-link hover:text-sand transition duration-300">Shop</a>
+                <a href="#portfolio" class="nav-link hover:text-sand transition duration-300">Portfolio</a>
+                <a href="#artists" class="nav-link hover:text-sand transition duration-300">Artists</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center bg-almost-black text-sand overflow-hidden">
+        <!-- Video Background -->
+        <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
+            <source src="assets/videos/hero.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Dark Overlay (optional, for better text readability) -->
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        
+        <!-- Logo -->
+        <div class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 hero-logo">
+            <img src="assets/logos/x_white.png" alt="Xatta Tattoo Logo">
+        </div>
+        
+        <!-- Content -->
+        <div class="container mx-auto px-6 z-10 text-center relative">
+        </br></br>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="book-tattoo.html" class="btn-secondary py-3 px-8 rounded-full font-bold text-lg">Book a Tattoo Session</a>
+                <a href="book-piercing.html" class="btn-primary py-3 px-8 rounded-full font-bold text-lg">Book a Piercing Session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tattoo School Section -->
+    <section id="school" class="py-20 bg-dark-gray text-sand">
+        <div class="container mx-auto px-0">
+            <div class="relative lg:w-1/2 w-full mb-12 lg:mb-0">
+                <img src="assets/Tattoo_01.jpg" 
+                     alt="Tattoo artist learning" class="w-full h-auto object-cover rounded-lg">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <h2 class="hero-title text-4xl md:text-5xl text-center text-sand bg-black bg-opacity-60 px-6 py-4 rounded-lg shadow-lg">
+                        TATTOO SCHOOL
+                    </h2>
+                </div>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-6">Become a Professional Tattoo Artist</h3>
+                    <p class="text-lg mb-6">Our comprehensive tattoo training program is designed to take you from beginner to professional in just 6 months. Learn from master tattoo artists with decades of experience in the industry.</p>
+                    <p class="text-lg mb-8">Our curriculum covers everything from tattoo history and hygiene to advanced techniques and business management. Hands-on practice with real clients under supervision.</p>
+                    <a href="#" class="btn-primary py-3 px-8 rounded-full font-bold text-lg inline-block">Subscribe and Learn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tattoo Shop Section -->
+    <section id="shop" class="py-20 bg-almost-black text-sand">
+        <div class="container mx-auto px-0">
+            <div class="relative lg:w-1/2 w-full mb-12 lg:mb-0">
+                <img src="assets/Shop_01.jpg" 
+                     alt="Tattoo ink and supplies" class="w-full h-auto object-cover rounded-lg">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <h2 class="hero-title text-4xl md:text-5xl text-center text-sand bg-black bg-opacity-60 px-6 py-4 rounded-lg shadow-lg">
+                        TATTOO SHOP
+                    </h2>
+                </div>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-6">Premium Tattoo Equipment & Supplies</h3>
+                    <p class="text-lg mb-6">We carry only the highest quality tattoo machines, needles, inks, and aftercare products from trusted brands worldwide. Whether you're a professional artist or just starting out, we have everything you need.</p>
+                    <p class="text-lg mb-8">Our knowledgeable staff can help you select the right equipment for your style and budget. We also offer equipment maintenance and repair services.</p>
+                    <a href="#" class="btn-secondary py-3 px-8 rounded-full font-bold text-lg inline-block">Shop Tattoo Supplies</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-light-gray text-almost-black">
+        <div class="container mx-auto px-6">
+            <div class="mb-12">
+                <div class="tattoo-carousel flex overflow-x-auto gap-4 pb-4 scrollbar-hide">
+                    <div class="flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4">
+                        <img src="portifolio/Tattoo_01.jpg" 
+                             alt="Tattoo 1" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                    </div>
+                    <div class="flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4">
+                        <img src="portifolio/Tattoo_02.jpg" 
+                             alt="Tattoo 2" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                    </div>
+                    <div class="flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4">
+                        <img src="portifolio/Tattoo_03.jpg" 
+                             alt="Tattoo 3" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                    </div>
+                    <div class="flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4">
+                        <img src="portifolio/Tattoo_04.jpg" 
+                             alt="Tattoo 4" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                    </div>
+                    <div class="flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4">
+                        <img src="portifolio/Tattoo_05.jpg" 
+                             alt="Tattoo 5" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="book-tattoo.html" class="btn-primary py-3 px-8 rounded-full font-bold text-lg inline-block">Book a Tattoo Session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Artists Section -->
+    <section id="artists" class="py-20 bg-almost-black text-sand">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Artist 1 -->
+                <div class="bg-dark-gray rounded-lg overflow-hidden shadow-lg">
+                    <img src="artist/artist_01.jpg" 
+                         alt="Artist 1" class="w-full h-80 object-contain">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Maruchello Rasik</h3>
+                        <a href="https://www.google.com/search?sca_esv=6a1c095ed36ff2a1&sxsrf=AE3TifPuASf3npGzWDsAMbZqIhGqn8ojnw:1758287262078&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIemkjk18Cn72Gp24fGkjjh6w8f_UmwvItOb-_M1yJww2SjGV8ZKbU4oS5Th-nIEousNh4akm2HdhdcqnPYY5MOPvlpEvL-IplYx00cbkjRJ-i_U682BXjicGzqsz8IiN83NMslbXZjmipEC18JghemD6lEXDc&q=tattoo+images&sa=X&ved=2ahUKEwiohK298uSPAxXLLBAIHUnmNvoQtKgLegQIFxAB&biw=1920&bih=958&dpr=1" class="btn-primary py-3 px-8 rounded-full font-bold text-lg" id="view-portfolio">View Portfolio</a>
+                    </div>
+                </div>
+                
+                <!-- Artist 2 -->
+                <div class="bg-dark-gray rounded-lg overflow-hidden shadow-lg">
+                    <img src="artist/artist_01.jpg" 
+                         alt="Artist 1" class="w-full h-80 object-contain">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">NAME GOES HERE</h3>
+                        <a href="https://www.google.com/search?sca_esv=6a1c095ed36ff2a1&sxsrf=AE3TifPuASf3npGzWDsAMbZqIhGqn8ojnw:1758287262078&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIemkjk18Cn72Gp24fGkjjh6w8f_UmwvItOb-_M1yJww2SjGV8ZKbU4oS5Th-nIEousNh4akm2HdhdcqnPYY5MOPvlpEvL-IplYx00cbkjRJ-i_U682BXjicGzqsz8IiN83NMslbXZjmipEC18JghemD6lEXDc&q=tattoo+images&sa=X&ved=2ahUKEwiohK298uSPAxXLLBAIHUnmNvoQtKgLegQIFxAB&biw=1920&bih=958&dpr=1" class="btn-primary py-3 px-8 rounded-full font-bold text-lg" id="view-portfolio">View Portfolio</a>
+                    </div>
+                </div>
+                
+                <!-- Artist 3 -->
+                <div class="bg-dark-gray rounded-lg overflow-hidden shadow-lg">
+                    <img src="artist/artist_01.jpg" 
+                         alt="Artist 1" class="w-full h-80 object-contain">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">NAME GOES HERE</h3>
+                        <a href="https://www.google.com/search?sca_esv=6a1c095ed36ff2a1&sxsrf=AE3TifPuASf3npGzWDsAMbZqIhGqn8ojnw:1758287262078&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIemkjk18Cn72Gp24fGkjjh6w8f_UmwvItOb-_M1yJww2SjGV8ZKbU4oS5Th-nIEousNh4akm2HdhdcqnPYY5MOPvlpEvL-IplYx00cbkjRJ-i_U682BXjicGzqsz8IiN83NMslbXZjmipEC18JghemD6lEXDc&q=tattoo+images&sa=X&ved=2ahUKEwiohK298uSPAxXLLBAIHUnmNvoQtKgLegQIFxAB&biw=1920&bih=958&dpr=1" class="btn-primary py-3 px-8 rounded-full font-bold text-lg" id="view-portfolio">View Portfolio</a>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social" class="py-16 bg-sand text-almost-black">
+        <div class="container mx-auto px-6">
+            <h2 class="hero-title text-4xl md:text-5xl text-center mb-12">FOLLOW US</h2>
+            <div class="flex justify-center space-x-8 mb-12">
+                <a href="#" class="text-4xl hover:text-dark-gray transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/XattaTattoo" class="text-4xl hover:text-dark-gray transition duration-300"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-4xl hover:text-dark-gray transition duration-300"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="text-4xl hover:text-dark-gray transition duration-300"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="text-center max-w-2xl mx-auto">
+                <p class="text-lg mb-6">Stay updated with our latest work, flash sales, and artist availability. Follow us for behind-the-scenes content, tattoo care tips, and more!</p>
+                <p class="text-lg">Tag us in your healed tattoos with #XattaTattoo for a chance to be featured!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-almost-black text-sand py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="assets/logos/x_white2.png" alt="Xatta Logo" class="w-40 h-auto mb-4">
+                    <p>Premium tattoo and piercing services. Where art meets skin.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Custom Tattoos</a></li>
+                        <li><a href="#" class="hover:underline">Piercings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Information</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Contact</h4>
+                    <address class="not-italic">
+                        <p>Olandu gavitė 11</p>
+                        <p>Vilnius - Lithuania</p>
+                        <p class="mt-2"></p>
+                        <p>Email: xatta.tattoo@gmail.com</p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-light-gray mt-12 pt-8 text-center">
+                <p>&copy; 2026 Xatta Tattoo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Artist 1 Modal -->
+    <div id="portfolio-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-1/2">
+            <div class="flex justify-between items-center border-b p-4">
+                <h3 class="text-xl font-bold">Maruchello Rasik's Portfolio</h3>
+                <button id="close-modal" class="text-black text-2xl">&times;</button>
+            </div>
+            <div class="p-4">
+                <div class="relative">
+                    <!-- Image Carousel -->
+                    <div id="carousel-images" class="w-full h-96 overflow-hidden">
+                        <img src="portifolio/Tattoo_01.jpg" alt="Tattoo 1" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Navigation Buttons -->
+                    <button id="prev-image" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-4 py-2">
+                        &lt;
+                    </button>
+                    <button id="next-image" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-4 py-2">
+                        &gt;
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.tattoo-carousel img');
+        const totalSlides = slides.length;
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+        
+        function updateCarousel() {
+            const carousel = document.querySelector('.tattoo-carousel');
+            const slideWidth = slides[0].parentElement.offsetWidth;
+            carousel.scrollTo({
+                left: currentSlide * (slideWidth + 16), // 16px is the gap
+                behavior: 'smooth'
+            });
+        }
+        
+        // Auto-advance carousel every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Get modal elements
+        const modal = document.getElementById('portfolio-modal');
+        const viewPortfolioLink = document.getElementById('view-portfolio');
+        const closeModalButton = document.getElementById('close-modal');
+
+        // Image carousel variables
+        const images = [
+            'portifolio/Tattoo_01.jpg',
+            'portifolio/Tattoo_02.jpg',
+            'portifolio/Tattoo_03.jpg',
+            'portifolio/Tattoo_04.jpg',
+            'portifolio/Tattoo_05.jpg'
+        ];
+        let currentImageIndex = 0;
+        const carouselImages = document.getElementById('carousel-images');
+        const prevImageButton = document.getElementById('prev-image');
+        const nextImageButton = document.getElementById('next-image');
+
+        // Show modal on link click
+        viewPortfolioLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.remove('hidden');
+            updateCarouselImage();
+        });
+
+        // Close modal on button click
+        closeModalButton.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside the modal content
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+
+        // Update carousel image
+        function updateCarouselImage() {
+            carouselImages.innerHTML = `<img src="${images[currentImageIndex]}" alt="Tattoo ${currentImageIndex + 1}" class="w-full h-full object-cover">`;
+        }
+
+        // Navigate to the previous image
+        prevImageButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateCarouselImage();
+        });
+
+        // Navigate to the next image
+        nextImageButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateCarouselImage();
+        });
+    </script>
+</body>
+</html>
