@@ -11,15 +11,12 @@
         :root {
             /* Configurable dot background */
             --dot-spacing: 10px;
-            /* Spacing between dots */
             --dot-size: 2px;
-            /* Size of the dots */
             --dot-color: rgba(213, 190, 44, 0.1);
-            /* Color of the dots */
 
             /* Colors */
             --color-white: #FFFFFF;
-            --color-almost-black: #171717;
+            --color-almost-black: #070707;
             --color-almost-white: #FFFFF0;
             --color-light-gray: #6a727d;
             --color-dark-gray: #303336;
@@ -29,6 +26,27 @@
             --font-primary: 'Arial';
             --font-secondary: 'Arial';
             --font-accent: 'Arial';
+
+            /* Artist Photo Dimensions */
+            --artist-photo-default-width: 600px;
+            --artist-photo-default-height: 150px;
+            --artist-photo-mobile-width: 600px;
+            --artist-photo-mobile-height: 150px;
+            --artist-photo-tablet-width: 600px;
+            --artist-photo-tablet-height: 150px;
+            --artist-photo-desktop-width: 600px;
+            --artist-photo-desktop-height: 150px;
+
+            /* Choose Button Dimensions */
+            --choose-btn-mobile-padding: 0.5rem 1rem;
+            --choose-btn-mobile-font-size: 1.5rem;
+            --choose-btn-mobile-min-width: 50px;
+            --choose-btn-tablet-padding: 0.75rem 1.5rem;
+            --choose-btn-tablet-font-size: 1.5rem;
+            --choose-btn-tablet-min-width: 50px;
+            --choose-btn-desktop-padding: 0.75rem 1.5rem;
+            --choose-btn-desktop-font-size: 1.5rem;
+            --choose-btn-desktop-min-width: 50px;
         }
 
         body {
@@ -305,6 +323,167 @@
             font-weight: 700;
             display: inline-block;
         }
+
+        /* Artist Card Styling */
+        .artist-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: transparent;
+            border-radius: 0;
+            overflow: visible;
+            margin-bottom: 0;
+            padding: 1.5rem 0;
+            text-align: left;
+            transition: transform 0.3s ease;
+            border-bottom: none;
+        }
+
+        .artist-photo {
+            width: var(--artist-photo-mobile-width);
+            height: var(--artist-photo-mobile-height);
+            object-fit: cover;
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            display: block;
+            flex-shrink: 0;
+            margin-right: 1.5rem;
+        }
+
+        .artist-info {
+            flex: 1;
+            padding: 0;
+            color: var(--color-almost-white);
+        }
+
+        .artist-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 0.25rem 0;
+            color: var(--color-almost-black);
+        }
+
+        .artist-info p {
+            font-size: 1.2rem;
+            margin: 0;
+            color: var(--color-almost-black);
+        }
+
+        .artist-info .languages {
+            font-size: 1rem;
+            color: var(--color-almost-black);
+            margin-top: 0.25rem;
+        }
+
+        /* New choose-btn CSS class */
+        .choose-btn {
+            background-color: var(--color-almost-black);
+            color: var(--color-almost-white);
+            padding: var(--choose-btn-tablet-padding);
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 0.5rem;
+            border-radius: 0;
+            font-size: var(--choose-btn-tablet-font-size);
+            min-width: var(--choose-btn-tablet-min-width);
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .choose-btn:hover {
+            background-color: var(--color-almost-white);
+            color: var(--color-almost-black);
+        }
+
+        @media (max-width: 640px) {
+            .artist-card {
+                padding: 1rem 0;
+            }
+
+            .artist-photo {
+                width: 80px;
+                height: 80px;
+                margin-right: 1rem;
+            }
+
+            .artist-info h3 {
+                font-size: 1rem;
+            }
+
+            .artist-info p {
+                font-size: 1rem;
+            }
+
+            .choose-btn {
+                padding: var(--choose-btn-mobile-padding);
+                font-size: var(--choose-btn-mobile-font-size);
+                min-width: var(--choose-btn-mobile-min-width);
+                margin-left: 0.5rem;
+            }
+        }
+
+        @media (min-width: 641px) {
+            .artist-card {
+                padding: 1.5rem 0;
+            }
+
+            .artist-photo {
+                width: 120px;
+                height: 120px;
+                margin-right: 2rem;
+            }
+
+            .artist-info h3 {
+                font-size: 2rem;
+            }
+
+            .artist-info p {
+                font-size: 0.85rem;
+            }
+
+            .choose-btn {
+                padding: var(--choose-btn-tablet-padding);
+                font-size: var(--choose-btn-tablet-font-size);
+                min-width: var(--choose-btn-tablet-min-width);
+                margin-left: 0.5rem;
+            }
+        }
+
+        /* Single column layout for all media sizes */
+        #artist .container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: 0;
+        }
+
+        /* White background for artist section */
+        #artist {
+            background-color: var(--color-white) !important;
+        }
+
+        #artist h2 {
+            color: var(--color-almost-black);
+        }
+
+        #artist .artist-card {
+            border-bottom: 0px solid var(--color-light-gray);
+        }
+
+        #artist .artist-info {
+            color: var(--color-almost-black);
+        }
+
+        #artist .artist-info h3 {
+            color: var(--color-almost-black);
+        }
+
+        #artist .artist-info p {
+            color: var(--color-almost-black);
+        }
     </style>
 </head>
 
@@ -385,16 +564,56 @@
 
     <!-- Pick Artist Section -->
     <section id="artist" class="py-0 bg-dark-gray text-white">
-        <h2 class="hero-title text-4xl md:text-5xl text-center text-white bg-black bg-opacity-60 px-6 py-4 rounded-lg shadow-lg mb-0">
+        <h2 class="hero-title text-4xl md:text-5xl text-center text-white bg-white bg-opacity-60 px-6 py-4 rounded-lg shadow-lg mb-0">
             PICK YOUR ARTIST
         </h2>
 
-        <div class="container mx-auto px-0">
-            <div class="relative lg:w-1/2 w-full mb-12 lg:mb-0 mx-auto">
-                <img src="assets/pickyourartist.png" alt="Pick your artist"
-                    class="w-full h-auto object-cover rounded-lg">
+        <div class="container mx-auto px-4 md:px-6 py-8">
+            <!-- Artist 1 -->
+            <div class="artist-card" data-artist="rasiktattoo">
+                <img src="artist/artist_malek_pic.png" alt="Rasiktattoo" class="artist-photo">
+                <div class="artist-info">
+                    <h3>@rasiktattoo</h3>
+                    <p>Tattooing: japanese, portraits, graphic</p>
+                    <p>Teaching</p>
+                    <p class="languages">Languages: LT, RU, ENG, PL</p>
+                </div>
+                <button class="choose-btn" data-artist="rasiktattoo">Choose</button>
             </div>
 
+            <!-- Artist 2 -->
+            <div class="artist-card" data-artist="your_waves">
+                <img src="artist/artist_your_waves_pic.png" alt="your.waves" class="artist-photo">
+                <div class="artist-info">
+                    <h3>@your.waves</h3>
+                    <p>Tattooing: graphic, colour new school</p>
+                    <p>Teaching</p>
+                    <p class="languages">Languages: LT, RU, ENG</p>
+                </div>
+                <button class="choose-btn" data-artist="your_waves">Choose</button>
+            </div>
+
+            <!-- Artist 3 -->
+            <div class="artist-card" data-artist="korsyusha">
+                <img src="artist/artist_korsy_pic.png" alt="korsyusha.ttt" class="artist-photo">
+                <div class="artist-info">
+                    <h3>@korsyusha.ttt</h3>
+                    <p>Tattooing: fineline, floral, dark graphics</p>
+                    <p class="languages">Languages: RU, ENG</p>
+                </div>
+                <button class="choose-btn" data-artist="korsyusha">Choose</button>
+            </div>
+
+            <!-- Artist 4 -->
+            <div class="artist-card" data-artist="salk_tat">
+                <img src="artist/artist_salk_pic.png" alt="salk_tat" class="artist-photo">
+                <div class="artist-info">
+                    <h3>@salk_tat</h3>
+                    <p>Tattooing: graphic realism, gothic motives</p>
+                    <p class="languages">Languages: LT, RU, ENG, PL</p>
+                </div>
+                <button class="choose-btn" data-artist="salk_tat">Choose</button>
+            </div>
         </div>
     </section>
 
@@ -590,6 +809,17 @@
         nextImageButton.addEventListener('click', () => {
             currentImageIndex = (currentImageIndex + 1) % images.length;
             updateCarouselImage();
+        });
+
+        // Artist Choose Button Handler
+        document.querySelectorAll('.choose-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const artistName = e.target.getAttribute('data-artist');
+                // You can redirect to a booking page or open a modal
+                alert(`Redirecting to booking page for ${artistName}`);
+                // Example: window.location.href = `book-tattoo.html?artist=${artistName}`;
+            });
         });
     </script>
 </body>
