@@ -11,8 +11,8 @@
         :root {
             /* Configurable dot background */
             --dot-spacing: 10px;
-            --dot-size: 2px;
-            --dot-color: rgba(213, 190, 44, 0.1);
+            --dot-size:0px;
+            --dot-color: rgba(134, 127, 80, 0.1);
 
             /* Colors */
             --color-white: #FFFFFF;
@@ -533,29 +533,27 @@
                 BECOME A PART OF<br>THE COMMUNITY
             </h1>
 
-            <div class="flex flex-col gap-1 md:gap-4 max-w-xs">
-                <a href="book-tattoo.html" class="btn-primary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg">Book a Tattoo Session</a>
-                <a href="book-piercing.html" class="btn-primary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg">Book a Piercing Session</a>
+            <div class="flex flex-col gap-2 md:gap-4 max-w-xs">
+                <a href="https://shop.xattatattoo.com/product/tattoo-rasik/" class="btn-primary py-1.5 px-2 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg w-fit">Book a Tattoo Session &nbsp; </a>
+                <a href="book-piercing.html" class="btn-primary py-1.5 px-2 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg w-fit">Book a Piercing Session</a>
             </div>
         </div>
     </section>
 
     <!-- Tattoo School Section -->
-    <section id="school" class="py-0 bg-dark-gray text-white">
-        <h2 class="hero-title text-4xl md:text-5xl text-center text-white bg-black bg-opacity-60 px-6 py-4 rounded-lg shadow-lg mb-0">
+    <section id="school" class="py-0 bg-black text-white">
+        <h2 class="hero-title text-xl md:text-5xl text-center text-white bg-black bg-opacity-60 px-6 py-1 rounded-lg shadow-lg mb-0" style="margin-bottom: 0px !important;">
             BECOME A PROFESSIONAL
         </h2>
-
-        <div class="text-center">
-            <a href="#" class="btn-primary py-3 px-8  font-bold text-lg inline-block">JOIN OUR TATTOO
-                SCHOOL</a>
-        </div>
 
         <div class="container mx-auto px-0">
             <div class="relative lg:w-1/2 w-full mb-12 lg:mb-0 mx-auto">
                 <img src="assets/malek.png" alt="Tattoo artist learning" class="w-full h-auto object-cover rounded-lg">
+                <div class="absolute top-4 left-0 right-0 text-center">
+                    <a href="#" class="btn-primary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg">JOIN OUR TATTOO SCHOOL</a>
+                </div>
                 <div class="absolute bottom-8 left-0 right-0 text-center">
-                    <a href="#" class="btn-primary py-3 px-8 font-bold text-lg inline-block">SCHOOL PRICE LIST</a>
+                    <a href="#" class="btn-primary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg">SCHOOL PRICE LIST</a>
                 </div>
             </div>
 
@@ -563,72 +561,79 @@
     </section>
 
     <!-- Pick Artist Section -->
-    <section id="artist" class="py-0 bg-dark-gray text-white">
-        <h2 class="hero-title text-4xl md:text-5xl text-center text-white bg-white bg-opacity-60 px-6 py-4 rounded-lg shadow-lg mb-0">
+    <section id="artist" class="py-0 bg-almost-black text-white">
+        <h2 class="hero-title text-xl md:text-5xl text-center text-white bg-white bg-opacity-60 px-6 py-4 rounded-lg shadow-lg mb-0">
             PICK YOUR ARTIST
         </h2>
 
         <div class="container mx-auto px-4 md:px-6 py-8">
             <!-- Artist 1 -->
-            <div class="artist-card" data-artist="rasiktattoo">
-                <img src="artist/artist_malek_pic.png" alt="Rasiktattoo" class="artist-photo">
-                <div class="artist-info">
-                    <h3>@rasiktattoo</h3>
-                    <p>Tattooing: japanese, portraits, graphic</p>
-                    <p>Teaching</p>
-                    <p class="languages">Languages: LT, RU, ENG, PL</p>
+            <a href="artist_rasiktattoo.html">
+                <div class="artist-card" data-artist="rasiktattoo">
+                    <img src="artist/artist_malek_pic.png" alt="Rasiktattoo" class="artist-photo">
+                    <div class="artist-info">
+                        <h3>@rasiktattoo</h3>
+                        <p>Tattooing: japanese, portraits, graphic</p>
+                        <p>Teaching</p>
+                        <p class="languages">Languages: LT, RU, ENG, PL</p>
+                    </div>
+                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg" data-artist="rasiktattoo" onclick="window.location.href = 'https://shop.xattatattoo.com/product/tattoo-rasik/'; event.stopPropagation();">Choose</button>
                 </div>
-                <button class="choose-btn" data-artist="rasiktattoo">Choose</button>
-            </div>
+            </a>
 
             <!-- Artist 2 -->
-            <div class="artist-card" data-artist="your_waves">
-                <img src="artist/artist_your_waves_pic.png" alt="your.waves" class="artist-photo">
-                <div class="artist-info">
-                    <h3>@your.waves</h3>
-                    <p>Tattooing: graphic, colour new school</p>
-                    <p>Teaching</p>
-                    <p class="languages">Languages: LT, RU, ENG</p>
+            <a href="artist_your_waves.html">
+                <div class="artist-card" data-artist="your_waves">
+                    <img src="artist/artist_your_waves_pic.png" alt="your.waves" class="artist-photo">
+                    <div class="artist-info">
+                        <h3>@your.waves</h3>
+                        <p>Tattooing: graphic, colour new school</p>
+                        <p>Teaching</p>
+                        <p class="languages">Languages: LT, RU, ENG</p>
+                    </div>
+                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg" data-artist="your_waves" onclick="event.stopPropagation();">Choose</button>
                 </div>
-                <button class="choose-btn" data-artist="your_waves">Choose</button>
-            </div>
+            </a>
 
             <!-- Artist 3 -->
-            <div class="artist-card" data-artist="korsyusha">
-                <img src="artist/artist_korsy_pic.png" alt="korsyusha.ttt" class="artist-photo">
-                <div class="artist-info">
-                    <h3>@korsyusha.ttt</h3>
-                    <p>Tattooing: fineline, floral, dark graphics</p>
-                    <p class="languages">Languages: RU, ENG</p>
+            <a href="artist_korsyusha.html">
+                <div class="artist-card" data-artist="korsyusha">
+                    <img src="artist/artist_korsy_pic.png" alt="korsyusha.ttt" class="artist-photo">
+                    <div class="artist-info">
+                        <h3>@korsyusha.ttt</h3>
+                        <p>Tattooing: fineline, floral, dark graphics</p>
+                        <p class="languages">Languages: RU, ENG</p>
+                    </div>
+                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg" data-artist="korsyusha" onclick="event.stopPropagation();">Choose</button>
                 </div>
-                <button class="choose-btn" data-artist="korsyusha">Choose</button>
-            </div>
+            </a>
 
             <!-- Artist 4 -->
-            <div class="artist-card" data-artist="salk_tat">
-                <img src="artist/artist_salk_pic.png" alt="salk_tat" class="artist-photo">
-                <div class="artist-info">
-                    <h3>@salk_tat</h3>
-                    <p>Tattooing: graphic realism, gothic motives</p>
-                    <p class="languages">Languages: LT, RU, ENG, PL</p>
+            <a href="artist_salk_tat.html">
+                <div class="artist-card" data-artist="salk_tat">
+                    <img src="artist/artist_salk_pic.png" alt="salk_tat" class="artist-photo">
+                    <div class="artist-info">
+                        <h3>@salk_tat</h3>
+                        <p>Tattooing: graphic realism, gothic motives</p>
+                        <p class="languages">Languages: LT, RU, ENG, PL</p>
+                    </div>
+                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg" data-artist="salk_tat" onclick="event.stopPropagation();">Choose</button>
                 </div>
-                <button class="choose-btn" data-artist="salk_tat">Choose</button>
-            </div>
+            </a>
         </div>
     </section>
 
     <!-- Tattoo Shop Section -->
+    <a href="http://shop.xattatattoo.com">
     <section id="shop" class="py-0 bg-dark-gray text-sand">
         <div class="container mx-auto px-0">
             <!-- edge-to-edge image wrapper -->
             <div class="shop-image-wrap">
                 <img src="assets/TattooShop.png" alt="Tattoo Shop" class="shop-image">
             </div>
-
-
         </div>
     </section>
-
+    </a>
     <!-- Social Media Section -->
     <section id="social" class="py-16 bg-black text-white">
         <div class="container mx-auto px-6">
@@ -810,17 +815,7 @@
             currentImageIndex = (currentImageIndex + 1) % images.length;
             updateCarouselImage();
         });
-
-        // Artist Choose Button Handler
-        document.querySelectorAll('.choose-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const artistName = e.target.getAttribute('data-artist');
-                // You can redirect to a booking page or open a modal
-                alert(`Redirecting to booking page for ${artistName}`);
-                // Example: window.location.href = `book-tattoo.html?artist=${artistName}`;
-            });
-        });
+        
     </script>
 </body>
 
