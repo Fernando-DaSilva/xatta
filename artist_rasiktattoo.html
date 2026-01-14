@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maruchello Rasik - Xatta Tattoo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Configurable dot background */
+            --dot-spacing: 10px;
+            --dot-size: 0px;
+            --dot-color: rgba(134, 127, 80, 0.1);
+
+            /* Colors */
+            --color-white: #FFFFFF;
+            --color-almost-black: #070707;
+            --color-almost-white: #FFFFF0;
+            --color-light-gray: #6a727d;
+            --color-dark-gray: #303336;
+            --color-sand: #D6CDA4;
+
+            /* Fonts */
+            --font-primary: 'Arial';
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-almost-black);
+            color: var(--color-white);
+        }
+
+        /* Reusing index.html classes */
+        .bg-almost-black {
+            background-color: var(--color-almost-black);
+        }
+
+        .bg-white {
+            background-color: var(--color-white);
+        }
+
+        .text-white {
+            color: var(--color-white);
+        }
+
+        .text-almost-black {
+            color: var(--color-almost-black);
+        }
+
+        /* Navigation Links */
+        .nav-link:hover {
+            color: var(--color-light-gray);
+        }
+
+        /* Buttons (from index.html) */
+        .btn-primary {
+            background-color: var(--color-almost-white);
+            color: var(--color-almost-black);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-almost-black);
+            color: var(--color-almost-white);
+            border: 1px solid var(--color-almost-white);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-almost-black);
+            color: var(--color-almost-white);
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-white);
+            color: var(--color-almost-black);
+        }
+
+        /* Artist Specific Styles */
+        .artist-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 1rem;
+            background-color: var(--color-almost-black);
+        }
+
+        @media (min-width: 768px) {
+            .artist-hero {
+                flex-direction: row;
+                justify-content: center;
+                gap: 4rem;
+                padding: 6rem 2rem;
+            }
+        }
+
+        .artist-hero-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            /* Optional: making it circular or square as per pref */
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .artist-hero-img {
+                margin-bottom: 0;
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        .artist-details h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .artist-details p {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-almost-white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation (Reused from index.html) -->
+    <!-- Navigation -->
+    <script src="js/navbar.js"></script>
+
+    <!-- Artist Hero Section -->
+    <section class="artist-hero">
+        <img src="artist/artist_malek_pic.png" alt="Maruchello Rasik" class="artist-hero-img">
+        <div class="artist-details text-center md:text-left">
+            <h1>@rasiktattoo</h1>
+            <p class="text-xl mb-4 font-light">Maruchello Rasik</p>
+            <div class="mb-6">
+                <p><strong>Tattooing:</strong> Japanese, Portraits, Graphic</p>
+                <p><strong>Teaching:</strong> Yes</p>
+                <p><strong>Languages:</strong> LT, RU, ENG, PL</p>
+            </div>
+            <a href="booking.html" class="btn-primary py-3 px-8 font-bold text-lg rounded-lg inline-block">Book a
+                Session</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="container mx-auto py-8">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-8">PORTFOLIO</h2>
+        <div class="portfolio-grid">
+            <!-- Portfolio Images -->
+            <div class="portfolio-item">
+                <img src="portifolio/rasiktattoo/Tattoo_00001.jpg" alt="Tattoo 1">
+            </div>
+            <div class="portfolio-item">
+                <img src="portifolio/rasiktattoo/Tattoo_00002.jpg" alt="Tattoo 2">
+            </div>
+            <div class="portfolio-item">
+                <img src="portifolio/rasiktattoo/Tattoo_00003.jpg" alt="Tattoo 3">
+            </div>
+            <div class="portfolio-item">
+                <img src="portifolio/rasiktattoo/Tattoo_00004.jpg" alt="Tattoo 4">
+            </div>
+            <div class="portfolio-item">
+                <img src="portifolio/rasiktattoo/Tattoo_00005.jpg" alt="Tattoo 5">
+            </div>
+            <div class="portfolio-item">
+                <img src="portifolio/rasiktattoo/Tattoo_00006.jpg" alt="Tattoo 1 Reprise">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Reused from index.html) -->
+    <footer class="bg-almost-black text-white py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="assets/logos/x_white.png" alt="Xatta Logo" class="w-120 h-auto mb-4">
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Tattoo</a></li>
+                        <li><a href="#" class="hover:underline">Piercing</a></li>
+                        <li><a href="#" class="hover:underline">Tattoo School</a></li>
+                        <li><a href="#" class="hover:underline">Tattoo Shop</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Contacts</h4>
+                    <address class="not-italic">
+                        <p>Vasario 16-sios 2-63,</p>
+                        <p>Vilnius</p>
+                        <p>01104 - Lithuania</p>
+                        <p class="mt-2"></p>
+                        <p>Email: info@xattatattoo.com</p>
+                        <p>Phone: +370 603 86 195</p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-light-gray mt-12 pt-8 text-center">
+                <p>&copy; 2026 Xatta Tattoo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle logic is now in js/navbar.js
+    </script>
+</body>
+
+</html>

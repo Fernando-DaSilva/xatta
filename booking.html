@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Session - Xatta Tattoo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Colors */
+            --color-white: #FFFFFF;
+            --color-almost-black: #070707;
+            --color-almost-white: #FFFFF0;
+            --color-light-gray: #6a727d;
+            --color-dark-gray: #303336;
+            --color-sand: #D6CDA4;
+
+            /* Fonts */
+            --font-primary: 'Arial';
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-almost-black);
+            color: var(--color-white);
+        }
+
+        /* Navigation Links */
+        .nav-link:hover {
+            color: var(--color-light-gray);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--color-sand);
+            color: var(--color-almost-black);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-white);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-almost-white);
+            border: 1px solid var(--color-light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-white);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Form Steps */
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Inputs */
+        .form-input {
+            background-color: var(--color-dark-gray);
+            border: 1px solid transparent;
+            color: var(--color-white);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--color-sand);
+            outline: none;
+            background-color: #3a3d41;
+        }
+
+        /* Checkbox/Radio Styling */
+        .custom-radio:checked+div {
+            border-color: var(--color-sand);
+            background-color: #303336;
+        }
+
+        /* Body Part Selector - Pin System */
+        #body-image-container {
+            position: relative;
+            cursor: crosshair;
+            display: inline-block;
+        }
+
+        #body-image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .pin {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--color-sand);
+            border: 2px solid var(--color-almost-black);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            /* Let clicks pass through if needed, though mostly container handles it */
+        }
+
+        @keyframes popIn {
+            from {
+                transform: translate(-50%, -50%) scale(0);
+            }
+
+            to {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Progress Bar */
+        .progress-step {
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        @media(min-width: 768px) {
+            .progress-step {
+                font-size: 1rem;
+            }
+        }
+
+        .progress-step.active {
+            color: var(--color-sand);
+            font-weight: bold;
+        }
+
+        .progress-step.completed {
+            color: var(--color-sand);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <script src="js/navbar.js"></script>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-4xl">
+
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-3xl md:text-5xl font-bold uppercase mb-4 tracking-wide">Booking Request</h1>
+            <p class="text-gray-400">Tell us about your idea. We'll get back to you with an estimate.</p>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="mb-12">
+            <div class="flex justify-between text-sm md:text-base mb-4 px-2">
+                <span class="progress-step active" data-step="1">1. Contact</span>
+                <span class="progress-step" data-step="2">2. Style</span>
+                <span class="progress-step" data-step="3">3. Placement</span>
+                <span class="progress-step" data-step="4">4. Details</span>
+                <span class="progress-step" data-step="5">5. Review</span>
+            </div>
+            <div class="h-1 bg-gray-800 rounded-full">
+                <div id="progress-bar" class="h-1 bg-sand w-1/5 rounded-full bg-[#D6CDA4]"></div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="booking-form" class="bg-gray-900/50 p-6 md:p-10 rounded-2xl border border-gray-800 shadow-2xl">
+
+            <!-- Step 1: Contact Info -->
+            <section id="step-1" class="step-content active">
+                <h2 class="text-2xl font-bold mb-6 text-sand">Contact Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">First Name *</label>
+                        <input type="text" name="firstName" required class="form-input w-full rounded-lg px-4 py-3">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Last Name *</label>
+                        <input type="text" name="lastName" required class="form-input w-full rounded-lg px-4 py-3">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Email Address *</label>
+                        <input type="email" name="email" required class="form-input w-full rounded-lg px-4 py-3">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Birthdate *</label>
+                        <input type="text" name="birthdate" required placeholder="DD/MM/YYYY"
+                            class="form-input w-full rounded-lg px-4 py-3">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Mobile Number *</label>
+                        <input type="tel" name="phone" required placeholder="+123..."
+                            class="form-input w-full rounded-lg px-4 py-3">
+                        <p class="text-xs text-gray-500 mt-1">Please add a phone number for possible further inquiries.
+                        </p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Instagram (Optional)</label>
+                        <input type="text" name="instagram" placeholder="@username"
+                            class="form-input w-full rounded-lg px-4 py-3">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Styling & Preferences -->
+            <section id="step-2" class="step-content">
+                <h2 class="text-2xl font-bold mb-6 text-sand">Style & Preferences</h2>
+
+                <!-- Artist -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Preferred Artist (Optional)</label>
+                    <select name="artist" class="form-input w-full rounded-lg px-4 py-3">
+                        <option value="No Preference">No Preference</option>
+                        <option value="Rasik">@rasiktattoo</option>
+                        <option value="YourWaves">@your.waves</option>
+                        <option value="Korsyusha">@korsyusha</option>
+                        <option value="Salk Tat">@salk_tat</option>
+                    </select>
+                </div>
+
+                <!-- Style -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-400 mb-3">Please select a style *</label>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        <!-- Options: Realism, Fine Line, Blackwork, Lettering, Traditional, Dotwork, Sketch Work -->
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="style" value="Realism" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Realism</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="style" value="Fine Line" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Fine Line</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="style" value="Blackwork" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Blackwork</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="style" value="Lettering" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Lettering</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="style" value="Traditional" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Traditional</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="style" value="Dotwork" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Dotwork</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" name="style" value="Sketch Work" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Sketch Work</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Color -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-400 mb-3">Choose the color of your tattoo
+                        *</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="color" value="Colored" class="custom-radio hidden" required>
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Colored</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="color" value="Mixed" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Mixed</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="color" value="Black & White" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Black & White</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="color" value="Consultancy" class="custom-radio hidden">
+                            <div
+                                class="border border-gray-700 rounded-lg p-3 text-center transition hover:bg-gray-800 text-sm">
+                                Need Consultancy</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Do you already have a tattoo? *</label>
+                    <div class="flex space-x-6">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="experience" value="Yes" class="text-sand focus:ring-sand"
+                                required>
+                            <span>Yes, I am</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="experience" value="No" class="text-sand focus:ring-sand">
+                            <span>Not yet</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Skin Tone -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-400 mb-3">Skin Tone</label>
+                    <div class="flex space-x-4">
+                        <label class="cursor-pointer text-center">
+                            <input type="radio" name="skinTone" value="Dark" class="hidden peer">
+                            <div
+                                class="w-12 h-12 rounded-full bg-[#5D4037] border-2 border-transparent peer-checked:border-sand hover:scale-110 transition">
+                            </div>
+                            <span class="text-xs text-gray-400 mt-1 block">Dark</span>
+                        </label>
+                        <label class="cursor-pointer text-center">
+                            <input type="radio" name="skinTone" value="Medium Dark" class="hidden peer">
+                            <div
+                                class="w-12 h-12 rounded-full bg-[#8D6E63] border-2 border-transparent peer-checked:border-sand hover:scale-110 transition">
+                            </div>
+                            <span class="text-xs text-gray-400 mt-1 block">Medium</span>
+                        </label>
+                        <label class="cursor-pointer text-center">
+                            <input type="radio" name="skinTone" value="Medium Light" class="hidden peer">
+                            <div
+                                class="w-12 h-12 rounded-full bg-[#D7CCC8] border-2 border-transparent peer-checked:border-sand hover:scale-110 transition">
+                            </div>
+                            <span class="text-xs text-gray-400 mt-1 block">Light</span>
+                        </label>
+                        <label class="cursor-pointer text-center">
+                            <input type="radio" name="skinTone" value="Light" class="hidden peer">
+                            <div
+                                class="w-12 h-12 rounded-full bg-[#F5F5F5] border-2 border-transparent peer-checked:border-sand hover:scale-110 transition text-black">
+                            </div>
+                            <span class="text-xs text-gray-400 mt-1 block">Pale</span>
+                        </label>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Step 3: Placement (Pin System) -->
+            <section id="step-3" class="step-content">
+                <h2 class="text-2xl font-bold mb-6 text-sand">Placement & Size</h2>
+                <p class="text-gray-400 mb-4">Please click on the body part where you want your tattoo to be placed. You
+                    can mark multiple spots.</p>
+
+                <div class="flex justify-center mb-6">
+                    <div id="body-image-container" class="border border-gray-700 rounded-lg overflow-hidden">
+                        <img src="BodyParts.png" alt="Select Body Part" id="body-image">
+                        <!-- Pins will be injected here via JS -->
+                    </div>
+                </div>
+
+                <div class="text-center mb-6">
+                    <button type="button" id="clear-pins-btn"
+                        class="text-xs underline text-gray-500 hover:text-white">Clear Markers</button>
+                    <input type="hidden" name="pinnedPoints" id="pinnedPoints">
+                </div>
+
+                <!-- Size Dropdown -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Approximate size of tattoo *</label>
+                    <select name="size" class="form-input w-full rounded-lg px-4 py-3" required>
+                        <option value="">Select a size...</option>
+                        <option value="1-5cm">1-5 cm in diameter</option>
+                        <option value="5-10cm">5-10 cm in diameter</option>
+                        <option value="10-20cm">10-20 cm in diameter</option>
+                        <option value="20-40cm">20-40 cm in diameter</option>
+                        <option value="+40cm">+ 40cm in diameter</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Step 4: Logistics & Description -->
+            <section id="step-4" class="step-content">
+                <h2 class="text-2xl font-bold mb-6 text-sand">Details</h2>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Description *</label>
+                    <p class="text-xs text-gray-500 mb-2">Describe your idea and help to get a first impression of your
+                        vision.</p>
+                    <textarea name="description" rows="5" required class="form-input w-full rounded-lg px-4 py-3"
+                        placeholder="My idea is..."></textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Availability *</label>
+                    <p class="text-xs text-gray-500 mb-2">Please indicate at which time of the week appointments are
+                        suitable for you.</p>
+                    <input type="text" name="availability" required placeholder="e.g.: all weekdays starting at 3pm"
+                        class="form-input w-full rounded-lg px-4 py-3">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Budget *</label>
+                    <input type="text" name="budget" required placeholder="Your budget range"
+                        class="form-input w-full rounded-lg px-4 py-3">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Upload images which inspired you</label>
+                    <p class="text-xs text-gray-500 mb-2">Since this is a request form, please provide links to your
+                        references (Google Drive, Pinterest, etc.) or attach them when your email client opens in the
+                        next step.</p>
+                    <input type="text" name="references" placeholder="http://..."
+                        class="form-input w-full rounded-lg px-4 py-3">
+                </div>
+            </section>
+
+            <!-- Step 5: Review -->
+            <section id="step-5" class="step-content">
+                <h2 class="text-2xl font-bold mb-6 text-sand">Review Request</h2>
+                <div class="bg-gray-800 rounded-lg p-6 mb-6">
+                    <div id="review-content" class="space-y-4 text-gray-300">
+                        <!-- JS will populate this -->
+                    </div>
+                </div>
+                <div class="flex items-start mb-6">
+                    <input type="checkbox" id="terms" required class="mt-1 mr-3">
+                    <label for="terms" class="text-sm text-gray-400">I agree to the Terms and Conditions and Privacy
+                        Policy of Xatta Tattoo.</label>
+                </div>
+                <p class="text-sm text-gray-400 mb-6 text-center">By clicking submit, your default email client will
+                    open with these details pre-filled. Please verify the content and attach any images before sending.
+                </p>
+            </section>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between mt-8 pt-8 border-t border-gray-800">
+                <button type="button" id="prev-btn"
+                    class="hidden btn-secondary px-8 py-3 rounded-lg font-bold">Back</button>
+                <div class="flex-grow text-right">
+                    <button type="button" id="next-btn" class="btn-primary px-10 py-3 rounded-lg font-bold">Next
+                        Step</button>
+                    <button type="submit" id="submit-btn"
+                        class="hidden btn-primary px-10 py-3 rounded-lg font-bold bg-green-600 hover:bg-green-500 text-white border-0">Send
+                        Request</button>
+                </div>
+            </div>
+
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-almost-black text-white py-8 border-t border-gray-800 mt-auto">
+        <div class="container mx-auto px-6 text-center text-sm text-gray-500">
+            &copy; 2026 Xatta Tattoo. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/booking.js"></script>
+</body>
+
+</html>

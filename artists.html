@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Artists & Portfolio - Xatta Tattoo</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+                :root {
+                        /* Configurable dot background */
+                        --dot-spacing: 10px;
+                        --dot-size: 0px;
+                        --dot-color: rgba(134, 127, 80, 0.1);
+
+                        /* Colors */
+                        --color-white: #FFFFFF;
+                        --color-almost-black: #070707;
+                        --color-almost-white: #FFFFF0;
+                        --color-light-gray: #6a727d;
+                        --color-dark-gray: #303336;
+                        --color-sand: #D6CDA4;
+
+                        /* Fonts */
+                        --font-primary: 'Arial';
+                }
+
+                body {
+                        font-family: var(--font-primary);
+                        background-color: var(--color-almost-black);
+                        color: var(--color-white);
+                }
+
+                /* Reusing index.html classes */
+                .bg-almost-black {
+                        background-color: var(--color-almost-black);
+                }
+
+                .bg-white {
+                        background-color: var(--color-white);
+                }
+
+                .text-white {
+                        color: var(--color-white);
+                }
+
+                .text-almost-black {
+                        color: var(--color-almost-black);
+                }
+
+                /* Navigation Links */
+                .nav-link:hover {
+                        color: var(--color-light-gray);
+                }
+
+                /* Buttons (from index.html) */
+                .btn-primary {
+                        background-color: var(--color-almost-white);
+                        color: var(--color-almost-black);
+                        transition: all 0.3s ease;
+                }
+
+                .btn-primary:hover {
+                        background-color: var(--color-almost-black);
+                        color: var(--color-almost-white);
+                        border: 1px solid var(--color-almost-white);
+                }
+
+                .btn-secondary {
+                        background-color: var(--color-almost-black);
+                        color: var(--color-almost-white);
+                        transition: all 0.3s ease;
+                        border: 1px solid var(--color-white);
+                }
+
+                .btn-secondary:hover {
+                        background-color: var(--color-white);
+                        color: var(--color-almost-black);
+                }
+
+                /* Portfolio Grid */
+                .portfolio-grid {
+                        display: grid;
+                        grid-template-columns: repeat(1, 1fr);
+                        gap: 1rem;
+                        padding: 2rem 0;
+                }
+
+                @media (min-width: 640px) {
+                        .portfolio-grid {
+                                grid-template-columns: repeat(2, 1fr);
+                        }
+                }
+
+                @media (min-width: 1024px) {
+                        .portfolio-grid {
+                                grid-template-columns: repeat(3, 1fr);
+                        }
+                }
+
+                .portfolio-item img {
+                        width: 100%;
+                        height: 300px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: transform 0.3s ease;
+                }
+
+                .portfolio-item img:hover {
+                        transform: scale(1.02);
+                }
+
+                .artist-section-title {
+                        text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                        border-bottom: 2px solid var(--color-dark-gray);
+                        padding-bottom: 0.5rem;
+                        margin-bottom: 2rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                }
+
+                .view-artist-btn {
+                        font-size: 0.9rem;
+                        text-decoration: underline;
+                        color: var(--color-sand);
+                }
+        </style>
+</head>
+
+<body>
+
+        <!-- Navigation (Reused from index.html) -->
+        <!-- Navigation -->
+        <script src="js/navbar.js"></script>
+
+
+        <!-- Page Header -->
+        <header class="bg-almost-black py-12 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold uppercase mb-4">Our Artists & Work</h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto px-4">Browse the complete portfolio of our talented
+                        artists.
+                        Each piece is a unique creation.</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container mx-auto px-6 pb-20">
+
+                <!-- Rasik Tattoo Section -->
+                <section class="mb-20">
+                        <h2 class="text-3xl font-bold artist-section-title">
+                                <span>@rasiktattoo</span>
+                                <a href="artist_rasiktattoo.html" class="view-artist-btn">View Profile</a>
+                        </h2>
+                        <div class="portfolio-grid" id="grid-rasik">
+                                <!-- Javascript will populate this -->
+                        </div>
+                        <div class="text-center mt-8">
+                                <a href="artist_rasiktattoo.html"
+                                        class="btn-secondary py-2 px-6 rounded-lg font-bold">See Full
+                                        Profile</a>
+                        </div>
+                </section>
+
+                <!-- Your Waves Section -->
+                <section class="mb-20">
+                        <h2 class="text-3xl font-bold artist-section-title">
+                                <span>@your.waves</span>
+                                <a href="artist_YourWaves.html" class="view-artist-btn">View Profile</a>
+                        </h2>
+                        <div class="portfolio-grid" id="grid-yourwaves">
+                                <!-- Javascript will populate this -->
+                        </div>
+                        <div class="text-center mt-8">
+                                <a href="artist_YourWaves.html" class="btn-secondary py-2 px-6 rounded-lg font-bold">See
+                                        Full
+                                        Profile</a>
+                        </div>
+                </section>
+
+                <!-- Korsyusha Section -->
+                <section class="mb-20">
+                        <h2 class="text-3xl font-bold artist-section-title">
+                                <span>@korsyusha.ttt</span>
+                                <a href="artist_korsyusha.html" class="view-artist-btn">View Profile</a>
+                        </h2>
+                        <div class="portfolio-grid" id="grid-korsyusha">
+                                <!-- Javascript will populate this -->
+                        </div>
+                        <div class="text-center mt-8">
+                                <a href="artist_korsyusha.html" class="btn-secondary py-2 px-6 rounded-lg font-bold">See
+                                        Full
+                                        Profile</a>
+                        </div>
+                </section>
+
+                <!-- Salk Tat Section -->
+                <section class="mb-20">
+                        <h2 class="text-3xl font-bold artist-section-title">
+                                <span>@salk_tat</span>
+                                <a href="artist_salk_tat.html" class="view-artist-btn">View Profile</a>
+                        </h2>
+                        <div class="portfolio-grid" id="grid-salk">
+                                <!-- Javascript will populate this -->
+                        </div>
+                        <div class="text-center mt-8">
+                                <a href="artist_salk_tat.html" class="btn-secondary py-2 px-6 rounded-lg font-bold">See
+                                        Full Profile</a>
+                        </div>
+                </section>
+
+        </div>
+
+
+        <!-- Footer (Reused from index.html) -->
+        <footer class="bg-almost-black text-white py-12 border-t border-gray-800">
+                <div class="container mx-auto px-6">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                                <div>
+                                        <img src="assets/logos/x_white.png" alt="Xatta Logo" class="w-120 h-auto mb-4">
+                                </div>
+                                <div>
+                                        <h4 class="text-xl font-bold mb-4">Services</h4>
+                                        <ul class="space-y-2">
+                                                <li><a href="#" class="hover:underline">Tattoo</a></li>
+                                                <li><a href="#" class="hover:underline">Piercing</a></li>
+                                                <li><a href="#" class="hover:underline">Tattoo School</a></li>
+                                                <li><a href="#" class="hover:underline">Tattoo Shop</a></li>
+                                        </ul>
+                                </div>
+                                <div>
+                                        <h4 class="text-xl font-bold mb-4">Contacts</h4>
+                                        <address class="not-italic">
+                                                <p>Vasario 16-sios 2-63,</p>
+                                                <p>Vilnius</p>
+                                                <p>01104 - Lithuania</p>
+                                                <p class="mt-2"></p>
+                                                <p>Email: info@xattatattoo.com</p>
+                                                <p>Phone: +370 603 86 195</p>
+                                        </address>
+                                </div>
+                        </div>
+                        <div class="border-t border-light-gray mt-12 pt-8 text-center">
+                                <p>&copy; 2026 Xatta Tattoo. All rights reserved.</p>
+                        </div>
+                </div>
+        </footer>
+
+        <script>
+                // Mobile menu toggle logic is now in js/navbar.js
+                // Portfolio Randomization
+                document.addEventListener('DOMContentLoaded', () => {
+                        const artists = [
+                                {
+                                        id: 'grid-rasik',
+                                        path: 'portifolio/rasiktattoo/',
+                                        count: 68,
+                                        limit: 18,
+                                        ext: '.JPG'
+                                },
+                                {
+                                        id: 'grid-yourwaves',
+                                        path: 'portifolio/YourWaves/',
+                                        count: 70,
+                                        limit: 18,
+                                        ext: '.JPG'
+                                },
+                                {
+                                        id: 'grid-korsyusha',
+                                        path: 'portifolio/korsyusha/',
+                                        count: 19,
+                                        limit: 19, // Show all
+                                        ext: '.JPG',
+                                        exceptions: { 1: '.jpg' }
+                                },
+                                {
+                                        id: 'grid-salk',
+                                        path: 'portifolio/salk_tat/',
+                                        count: 6,
+                                        limit: 6, // Show all
+                                        ext: '.JPG'
+                                }
+                        ];
+
+                        function pad(num, size) {
+                                var s = "000000000" + num;
+                                return s.substr(s.length - size);
+                        }
+
+                        function shuffle(array) {
+                                let currentIndex = array.length, randomIndex;
+
+                                // While there remain elements to shuffle.
+                                while (currentIndex != 0) {
+                                        // Pick a remaining element.
+                                        randomIndex = Math.floor(Math.random() * currentIndex);
+                                        currentIndex--;
+
+                                        // And swap it with the current element.
+                                        [array[currentIndex], array[randomIndex]] = [
+                                                array[randomIndex], array[currentIndex]];
+                                }
+
+                                return array;
+                        }
+
+                        artists.forEach(artist => {
+                                const container = document.getElementById(artist.id);
+                                if (!container) return;
+
+                                // Create array of possible indices [1...count]
+                                let indices = Array.from({ length: artist.count }, (_, i) => i + 1);
+
+                                // Shuffle and slice if limit is less than count
+                                if (artist.limit < artist.count) {
+                                        indices = shuffle(indices).slice(0, artist.limit);
+                                } else {
+                                        // If we show all, just sort them naturally or keep them random?
+                                        // Let's shuffle them too for "random presentation" even if all match
+                                        indices = shuffle(indices);
+                                }
+
+                                indices.forEach((index, itemIdx) => {
+                                        const ext = (artist.exceptions && artist.exceptions[index]) ? artist.exceptions[index] : artist.ext;
+                                        const filename = `Tattoo_${pad(index, 5)}${ext}`;
+                                        const fullPath = `${artist.path}${filename}`;
+
+                                        const div = document.createElement('div');
+                                        div.className = 'portfolio-item';
+
+                                        const img = document.createElement('img');
+                                        img.src = fullPath;
+                                        img.alt = `Artist Work ${index}`;
+                                        img.loading = 'lazy';
+
+                                        div.appendChild(img);
+                                        container.appendChild(div);
+                                });
+                        });
+                });
+        </script>
+</body>
+
+</html>

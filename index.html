@@ -11,7 +11,7 @@
         :root {
             /* Configurable dot background */
             --dot-spacing: 10px;
-            --dot-size:0px;
+            --dot-size: 0px;
             --dot-color: rgba(134, 127, 80, 0.1);
 
             /* Colors */
@@ -489,40 +489,13 @@
 
 <body class="bg-white">
     <!-- Navigation -->
-    <nav class="bg-almost-black text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold hero-title">
-                <img src="assets/logos/SingleXwhite.png" alt="Xatta Logo" style="width:10%; height:auto;">
-            </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link hover:text-white transition duration-300">Home</a>
-                <a href="#school" class="nav-link hover:text-white transition duration-300">School</a>
-                <a href="#shop" class="nav-link hover:text-white transition duration-300">Shop</a>
-                <a href="#portfolio" class="nav-link hover:text-white transition duration-300">Portfolio</a>
-                <a href="#artists" class="nav-link hover:text-white transition duration-300">Artists</a>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-almost-black absolute w-full left-0 px-6 pb-4 shadow-lg">
-            <div class="flex flex-col space-y-3 mt-2">
-                <a href="#home" class="nav-link hover:text-white transition duration-300">Home</a>
-                <a href="#school" class="nav-link hover:text-white transition duration-300">School</a>
-                <a href="#shop" class="nav-link hover:text-white transition duration-300">Shop</a>
-                <a href="#portfolio" class="nav-link hover:text-white transition duration-300">Portfolio</a>
-                <a href="#artists" class="nav-link hover:text-white transition duration-300">Artists</a>
-            </div>
-        </div>
-    </nav>
+    <script src="js/navbar.js"></script>
 
     <!-- Hero Section -->
     <section id="home" class="relative flex items-center justify-center bg-almost-black text-white overflow-hidden">
         <!-- Image Background (Full Coverage) -->
-        <img src="assets/Cover.png" alt="Hero Background" class="absolute inset-0 w-full h-full object-contain object-top">
+        <img src="assets/Cover.png" alt="Hero Background"
+            class="absolute inset-0 w-full h-full object-contain object-top">
 
         <!-- Dark Overlay (optional, for better text readability) -->
         <div class="absolute inset-0 bg-black opacity-10"></div>
@@ -534,15 +507,20 @@
             </h1>
 
             <div class="flex flex-col gap-2 md:gap-4 max-w-xs">
-                <a href="https://shop.xattatattoo.com/product/tattoo-rasik/" class="btn-primary py-1.5 px-2 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg w-fit">Book a Tattoo Session &nbsp; </a>
-                <a href="book-piercing.html" class="btn-primary py-1.5 px-2 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg w-fit">Book a Piercing Session</a>
+                <a href="booking.html"
+                    class="btn-primary py-1.5 px-2 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg w-fit">Book a
+                    Tattoo Session &nbsp; </a>
+                <a href="booking.html"
+                    class="btn-primary py-1.5 px-2 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg w-fit">Book a
+                    Piercing Session</a>
             </div>
         </div>
     </section>
 
     <!-- Tattoo School Section -->
     <section id="school" class="py-0 bg-black text-white">
-        <h2 class="hero-title text-xl md:text-5xl text-center text-white bg-black bg-opacity-60 px-6 py-1 rounded-lg shadow-lg mb-0" style="margin-bottom: 0px !important;">
+        <h2 class="hero-title text-xl md:text-5xl text-center text-white bg-black bg-opacity-60 px-6 py-1 rounded-lg shadow-lg mb-0"
+            style="margin-bottom: 0px !important;">
             BECOME A PROFESSIONAL
         </h2>
 
@@ -550,10 +528,14 @@
             <div class="relative lg:w-1/2 w-full mb-12 lg:mb-0 mx-auto">
                 <img src="assets/malek.png" alt="Tattoo artist learning" class="w-full h-auto object-cover rounded-lg">
                 <div class="absolute top-4 left-0 right-0 text-center">
-                    <a href="#" class="btn-primary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg">JOIN OUR TATTOO SCHOOL</a>
+                    <a href="#"
+                        class="btn-primary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg">JOIN OUR
+                        TATTOO SCHOOL</a>
                 </div>
                 <div class="absolute bottom-8 left-0 right-0 text-center">
-                    <a href="#" class="btn-primary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg">SCHOOL PRICE LIST</a>
+                    <a href="#"
+                        class="btn-primary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg">SCHOOL
+                        PRICE LIST</a>
                 </div>
             </div>
 
@@ -562,7 +544,8 @@
 
     <!-- Pick Artist Section -->
     <section id="artist" class="py-0 bg-almost-black text-white">
-        <h2 class="hero-title text-xl md:text-5xl text-center text-white bg-white bg-opacity-60 px-6 py-4 rounded-lg shadow-lg mb-0">
+        <h2
+            class="hero-title text-xl md:text-5xl text-center text-white bg-white bg-opacity-60 px-6 py-4 rounded-lg shadow-lg mb-0">
             PICK YOUR ARTIST
         </h2>
 
@@ -577,7 +560,9 @@
                         <p>Teaching</p>
                         <p class="languages">Languages: LT, RU, ENG, PL</p>
                     </div>
-                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg" data-artist="rasiktattoo" onclick="window.location.href = 'https://shop.xattatattoo.com/product/tattoo-rasik/'; event.stopPropagation();">Choose</button>
+                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg"
+                        data-artist="rasiktattoo"
+                        onclick="window.location.href = 'https://shop.xattatattoo.com/product/tattoo-rasik/'; event.stopPropagation();">Choose</button>
                 </div>
             </a>
 
@@ -591,7 +576,8 @@
                         <p>Teaching</p>
                         <p class="languages">Languages: LT, RU, ENG</p>
                     </div>
-                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg" data-artist="your_waves" onclick="event.stopPropagation();">Choose</button>
+                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg"
+                        data-artist="your_waves" onclick="event.stopPropagation();">Choose</button>
                 </div>
             </a>
 
@@ -604,7 +590,8 @@
                         <p>Tattooing: fineline, floral, dark graphics</p>
                         <p class="languages">Languages: RU, ENG</p>
                     </div>
-                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg" data-artist="korsyusha" onclick="event.stopPropagation();">Choose</button>
+                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg"
+                        data-artist="korsyusha" onclick="event.stopPropagation();">Choose</button>
                 </div>
             </a>
 
@@ -617,7 +604,8 @@
                         <p>Tattooing: graphic realism, gothic motives</p>
                         <p class="languages">Languages: LT, RU, ENG, PL</p>
                     </div>
-                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg" data-artist="salk_tat" onclick="event.stopPropagation();">Choose</button>
+                    <button class="btn-secondary py-1.5 px-3 md:py-3 md:px-8 font-bold text-xs md:text-lg rounded-lg"
+                        data-artist="salk_tat" onclick="event.stopPropagation();">Choose</button>
                 </div>
             </a>
         </div>
@@ -625,14 +613,14 @@
 
     <!-- Tattoo Shop Section -->
     <a href="http://shop.xattatattoo.com">
-    <section id="shop" class="py-0 bg-dark-gray text-sand">
-        <div class="container mx-auto px-0">
-            <!-- edge-to-edge image wrapper -->
-            <div class="shop-image-wrap">
-                <img src="assets/TattooShop.png" alt="Tattoo Shop" class="shop-image">
+        <section id="shop" class="py-0 bg-dark-gray text-sand">
+            <div class="container mx-auto px-0">
+                <!-- edge-to-edge image wrapper -->
+                <div class="shop-image-wrap">
+                    <img src="assets/TattooShop.png" alt="Tattoo Shop" class="shop-image">
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     </a>
     <!-- Social Media Section -->
     <section id="social" class="py-16 bg-black text-white">
@@ -718,13 +706,7 @@
     </div>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        // Mobile menu toggle logic is now in js/navbar.js
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -815,7 +797,7 @@
             currentImageIndex = (currentImageIndex + 1) % images.length;
             updateCarouselImage();
         });
-        
+
     </script>
 </body>
 
